@@ -19,8 +19,7 @@ OBJECTS = Abfind.o Abpop.o Abunplot.o Batom.o Begin.o Binary.o \
 	Pltflux.o Pltspec.o Pointcurs.o Prinfo.o Putasci.o Readobs.o \
 	Rinteg.o Smooth.o Specplot.o Stats.o Sunder.o Synpop.o Synspec.o \
 	Synth.o Taukap.o Total.o Trudamp.o Ucalc.o Vargauss.o \
-	Vmacro.o Voigt.o Wavecalc.o Weedout.o Writenumber.o sm_limits_wrapper.o
-
+	Vmacro.o Voigt.o Wavecalc.o Weedout.o Writenumber.o
 
 #     here are the common files
 COMMON =  Atmos.com Dummy.com Equivs.com Factor.com Kappa.com Linex.com \
@@ -30,13 +29,13 @@ COMMON =  Atmos.com Dummy.com Equivs.com Factor.com Kappa.com Linex.com \
 CC = cc
 CFLAGS = -g -DmacOSX -DNEED_SWAP
 
-FC = gfortran -Wall -g -ffixed-line-length-72 -fno-underscoring -fbounds-check -m64
+FC = gfortran -Wall -g -ffixed-line-length-72 -ff2c  -m64 -fbounds-check
 
 # the following lines point to some needed libraries
 X11LIB = /usr/X11R6/lib
 SMLIB = /usr/local/lib
 AQLIB = /usr/local/lib
-SMINC = ./sm_headers
+
 
 #        here are the compilation and linking commands
 all: MOOG ;
@@ -56,8 +55,7 @@ MOOG:  $(OBJECTS)
 	$(FC) $(OBJECTS) -o MOOG -L$(X11LIB) -lX11 \
 	-L$(SMLIB) -lplotsub -ldevices -lutils -L$(AQLIB) -laquaterm
 
-sm_limits_wrapper.o: sm_limits_wrapper.c
-	$(CC) $(CFLAGS) -c $< -I$(SMINC) -o $@
+
     
 $(OBJECTS): $(COMMON)
 

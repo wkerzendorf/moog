@@ -14,7 +14,7 @@ c******************************************************************************
       include 'Multistar.com'
       real*4 style(1)
       real*4 yup,ydown
-      real*8 testa, testb
+
       integer iflip
 
 
@@ -26,12 +26,10 @@ c*****for grid syntheses, dump out relevant information to a file
  
 
 c*****begin with a default window
+
       call sm_location (3500,31000,4000,30000)
-      call sm_window (1,1,1,1,1,1)
-      testa = 0.0D0
-      testb = 1.0D0
-      
-      call sm_limits_wrapper (0.0D0, 1.0D0, 0.0D0, 1.0D0)
+      call sm_window (1,1,1,1,1,1)      
+      call sm_limits (0.0D0, 1.0D0, 0.0D0, 1.0D0)
       call defcolor (1)
 
 
@@ -101,7 +99,7 @@ c*****draw and label the box for the spectra
 c*****plot the synthetic spectra
       call sm_lweight (2.2)
       call sm_expand (0.7)
-      do i=1,100
+      do i=1,95
          if (pec(i) .ne. 0) go to 111
       enddo            
 111   do j=1,nsyn

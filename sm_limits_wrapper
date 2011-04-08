@@ -1,6 +1,0 @@
-#include "sm_declare.h"
-
-void sm_limits_wrapper_(double *a, double *b, double *c, double *d)
-{
-    sm_limits(*a, *b, *c, *d);
-}
