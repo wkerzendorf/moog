@@ -29,13 +29,13 @@ COMMON =  Atmos.com Dummy.com Equivs.com Factor.com Kappa.com Linex.com \
 CC = cc
 CFLAGS = -g -DmacOSX -DNEED_SWAP
 
-FC = gfortran -Wall -g -ffixed-line-length-72 -ff2c  -m64 -fbounds-check
+FC = gfortran -Wall -g -ffixed-line-length-72 -ff2c  -m64
 
 # the following lines point to some needed libraries
 X11LIB = /usr/X11R6/lib
 SMLIB = /usr/local/lib
 AQLIB = /usr/local/lib
-
+SMINC = ./sm_headers
 
 #        here are the compilation and linking commands
 all: MOOG ;
@@ -44,7 +44,8 @@ all: MOOG ;
 	@echo make sure that you have entered the proper parameters
 	@echo for MOOG into the FORTRAN source driver
 	@echo routine Moog.f !!!!!!!!!!!!
-	@echo
+	@echo To do so please run
+	@echo 
 	@echo NOTE: the isotop driver has been eliminated;
 	@echo your synthesis needs for elemental and isotopic
 	@echo abundances now can be handled with the synth driver

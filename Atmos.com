@@ -29,7 +29,7 @@ c******************************************************************************
       character*2  names(95)
       character*10 modtype
       character*7  control
-      character*3  machine
+c     character*3  machine
       character*1  silent
 
       common/atmos/t, theta, tkev, tlog, 

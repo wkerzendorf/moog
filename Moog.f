@@ -19,14 +19,14 @@ c     be able to pull in auxiliary data files; executing 'make' will
 c     generate a reminder of this necessity
       write (moogpath,1001)
       moogpath = 
-     .  '/Users/wkerzend/software/moog2010.1'
+     .  '/Users/wkerzend/software/moog2010.1/'
 
 
 c*****What kind of machine are you using?  Possible ones are:
 c     "mac" = Intel-based Apple Mac 
 c     "pcl" = a PC or desktop running some standard linux like Redhat
 c     "uni" = a machine running Unix, specifically Sun Solaris
-      machine = "mac"
+c      machine = "mac"
 
 
 c*****for x11 terminal types, define the parameters of plotting windows;

@@ -9,6 +9,8 @@ c***************************************************************************
       include 'Atmos.com'
       include 'Pstuff.com'
       character*80 line, systemcall
+      character*20 :: machine
+      character*80 :: moogDataPath
       integer num
 
 
@@ -26,15 +28,20 @@ c     command, for which the output format is unique to the operating
 c     system.
       write (systemcall,*) 'stty -a > tmpsize'
       call system (systemcall)
+      call system('uname > tmpsystem')
+      open (98, file='tmpsystem')
+      read (98, *) machine
+      close(98, status='delete')
+      call system ('rm tmpsystem')
       open (99,file='tmpsize')
 5     read (99,1010,end=15) line
       do i=1,77
          if (line(i:i+3) .eq. 'rows') then
-            if     (machine .eq. 'pcl') then
+            if     (machine .eq. 'Linux') then
                read (line(i+4:i+6),1011) maxline
-            elseif (machine .eq. 'mac') then
+            elseif (machine .eq. 'Darwin') then
                read (line(i-4:i-2),1011) maxline
-            elseif (machine .eq. 'uni') then
+            elseif (machine .eq. 'SunOS') then
                read (line(i+6:i+8),1011) maxline
             endif
             go to 10
@@ -53,7 +60,9 @@ c     system.
       endif
 10    close (99,status='delete')
       write (systemcall,*) '\\rm -f tmpsize'
+
       call system (systemcall)
+
       if (maxline .lt. 10) then
          maxline = 24
       else
@@ -69,6 +78,9 @@ c*****clear the text screen
 c*****open data files carried with the source code: Barklem damping
       nfbarklem = 35
       num = 60
+c      call getenv('moogdata', moogDataPath)
+c      if (moogDataPath .eq. ''):
+
       call getcount (num,moogpath)
       if (moogpath(num:num) .ne. '/') then
          num = num + 1
@@ -76,6 +88,7 @@ c*****open data files carried with the source code: Barklem damping
       endif
       fbarklem(1:num) = moogpath(1:num)
       fbarklem(num+1:num+11) = 'Barklem.dat'
+      fbarklem(1:num+10) = fbarklem(2:num+11)
       open (nfbarklem,file=fbarklem)
 
  
