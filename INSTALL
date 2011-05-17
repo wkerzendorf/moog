@@ -1,0 +1,11 @@
+What you need:
+
+
+
+
+
+Flags in the Makefile:
+-m64 Build in 64 bit mode - ATTENTION SuperMongo also needs
+to be compiled in 64 bit mode (Scisoft is 32-bit in April 2011)
+
+-ff2c very important for mac and linux. This makes it find the right library of supermongo and can 

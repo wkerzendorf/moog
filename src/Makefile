@@ -1,0 +1,66 @@
+#     makefile for MOOG with all of the common block assignments;
+
+FC = gfortran 
+FFLAGS = -Wall -O4 -ffixed-line-length-72 -ff2c  -m64
+
+
+
+SRCDIR = src/
+# the following lines point to some needed libraries
+X11LIB = /usr/X11R6/lib
+SMLIB = /usr/local/lib
+AQLIB = /usr/local/lib
+
+UNAME := $(shell uname)
+
+
+ifeq ($(UNAME), Linux)
+	LFLAGS = -L$(X11LIB) -lX11 -L$(SMLIB) -lplotsub -ldevices -lutils
+endif
+ifeq ($(UNAME), Darwin)
+	LFLAGS = -L$(X11LIB) -lX11 -L$(SMLIB) -lplotsub -ldevices -lutils
+endif
+
+
+
+
+OBJECTS = Abfind.o Abpop.o Abunplot.o Batom.o Begin.o Binary.o \
+	Binplot.o Binplotprep.o Blends.o Bmolec.o Boxit.o \
+	Calmod.o Cdcalc.o Chabund.o Cog.o Cogplot.o Cogsyn.o \
+	Correl.o Cross.o Curve.o Damping.o Defcolor.o Discov.o \
+	Doflux.o Drawcurs.o Eqlib.o Estim.o Ewfind.o \
+	Ewweighted.o Fakeline.o Findtic.o Finish.o \
+	Fluxplot.o Gammabark.o Getasci.o Getcount.o Getnum.o \
+	Gridplo.o Gridsyn.o Infile.o Inlines.o Inmodel.o Invert.o \
+	Jexpint.o Lineinfo.o Lineabund.o Linlimit.o \
+	Makeplot.o Minimax.o Molquery.o Moog.o Mydriver.o \
+	Nansi.o Nearly.o Number.o Obshead.o \
+	Oneline.o Opaccouls.o OpacHelium.o OpacHydrogen.o \
+	Opacit.o Opacmetals.o Opacscat.o Params.o Partfn.o \
+	Partnew.o Plotit.o Plotremember.o Pltabun.o Pltcog.o \
+	Pltflux.o Pltspec.o Pointcurs.o Prinfo.o Putasci.o Readobs.o \
+	Rinteg.o Smooth.o Specplot.o Stats.o Sunder.o Synpop.o Synspec.o \
+	Synth.o Taukap.o Total.o Trudamp.o Ucalc.o Vargauss.o \
+	Vmacro.o Voigt.o Wavecalc.o Weedout.o Writenumber.o
+
+#     here are the common files
+COMMON =  Atmos.com Dummy.com Equivs.com Factor.com Kappa.com Linex.com \
+	Mol.com Multistar.com Obspars.com Plotval.com Pstuff.com \
+	Quants.com Multimod.com Dampdat.com
+
+
+
+#        here are the compilation and linking commands
+all: moog;
+
+
+
+moog:  $(OBJECTS);
+	$(FC) $(OBJECTS) -o moog $(LFLAGS)
+$(OBJECTS): $(COMMON)
+
+
+clean:
+	-rm -f *.o moog
+
+        
