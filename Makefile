@@ -13,7 +13,9 @@ all:
 	@echo -----------------------------------------------------------------
 
 install: all
+	mkdir -p $(PREFIX)/bin
 	install -m 0755 src/moog $(PREFIX)/bin
+	mkdir -p $(PREFIX)/share/moog
 	install -m 0644 data/*.dat $(PREFIX)/share/moog
 
 clean:
