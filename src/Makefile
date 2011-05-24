@@ -1,7 +1,7 @@
 #     makefile for MOOG with all of the common block assignments;
 
-FC = gfortran 
-FFLAGS = -Wall -O4 -ffixed-line-length-72 -ff2c  -m64
+FC = gfortran -m64
+FFLAGS = -Wall -O4 -ffixed-line-length-72 -ff2c
 
 
 
