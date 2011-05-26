@@ -251,7 +251,7 @@ lines_in       '%s'
         # Check that we actually got a spectrum
         smoothed_file = open(smoothed_out, 'r')
         if len(smoothed_file.readlines()) == 0:
-            raise MOOGError("MOOG apparently completed successfully, but we found no spectrum in %s. Input/Output files:\n%s" % (smoothed_out, "\n\t".join([moog_in, atmosphere_model, stronglines_list, obspectrum, summary_out, standard_out, smoothed_out, hardpost_out]), ))
+            raise MOOGError('Could not find spectrum synthesised by MOOG')
         
         # Load up the spectrum data
         spectrum_data = np.loadtxt(smoothed_out, skiprows=2)
@@ -263,4 +263,13 @@ lines_in       '%s'
         
         
         return spectrum_data
+
+
+class MOOGError(Exception):
+    
+    def __init__(self, value):
+        self.parameter = value
+        
+    def __str__(self):
+        return repr(self.parameter)
 
