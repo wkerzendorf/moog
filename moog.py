@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+
+# This code was written by Andy Casey, RSAA acasey@mso.anu.edu.au
+# Please contact me if you wish to use this code for scientific purposes
+# License requires that this header remain within this code if used or distributed
+
+
 import logging
 import numpy as np
 import os
