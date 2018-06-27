@@ -103,7 +103,7 @@ c*****read in the strong lines if needed
          endif
       endif
 
-340   nlines = 2500 - nstrong
+340   nlines = 250000 - nstrong
       j = 1
 333   if (linfileopt .eq. 0) then
          read (nflines,1002,end=311) wave1(j),atom1(j),e(j,1),gf(j),
@@ -253,7 +253,7 @@ c*****here are the calculations specific to atomic lines
 
 
 c*****quit the routine normally
-      if (nlines+nstrong .lt. 2500) then
+      if (nlines+nstrong .lt. 250000) then
          if (sstop .gt. wave1(nlines)+10.) sstop = wave1(nlines)+10.
       endif
       lim1line = 1
@@ -293,6 +293,5 @@ c*****format statements
       
 
       end
-
 
 
