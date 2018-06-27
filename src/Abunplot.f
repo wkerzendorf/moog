@@ -10,8 +10,9 @@ c******************************************************************************
       include 'Linex.com'
       include 'Pstuff.com'
       include 'Dummy.com'
-      real*4 ep(2500),abb(2500),logrw(2500),wavepl(2500)
-      equivalence (ep,dummy3(1)),(abb,dummy3(1251)),(logrw,dummy3(2501))
+      real*4 ep(250000),abb(250000),logrw(250000),wavepl(250000)
+      equivalence (ep,dummy3(1)),(abb,dummy3(125001)),
+     .            (logrw,dummy3(250001))
       real*4 style(1),ymed
       character ion*4
 

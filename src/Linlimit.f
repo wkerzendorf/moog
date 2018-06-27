@@ -79,7 +79,7 @@ c     wavelength step; called from "synspec"
                return
             endif
          enddo   
-         if (nlines+nstrong .eq. 2500) then
+         if (nlines+nstrong .eq. 250000) then
             lim2line = -1
          else
             lim2line = nlines
