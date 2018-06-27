@@ -125,7 +125,7 @@ c*****divide the lines into keepers and discards
             endif
          endif
       enddo
-      if (nlines +nstrong .eq. 2500) then
+      if (nlines +nstrong .eq. 250000) then
          call inlines (6)
          go to 1
       endif
